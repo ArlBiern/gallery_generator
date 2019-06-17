@@ -191,5 +191,57 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   const sliderSample = new Slider('#slider1');
+
+  // ============================================
+
+  // === ACCORDION ===
+
+  class Accordion {
+    constructor(elementsSelector, options) {
+      const defaultOptions = {
+        backgroundsSet: joyBackgrounds
+      }
+
+      this.options = Object.assign({}, defaultOptions, options)
+      this.accordionSelector = elementsSelector;
+      this.accordion = null;
+      this.elements = null;
+
+      this.generateAccordion();
+    }
+
+    // Generating an Accordion
+    generateAccordion() {
+      this.accordion = document.querySelector(this.accordionSelector);
+      this.accordion.classList.add('accordion');
+
+      const accordionContainer = document.createElement('div');
+      accordionContainer.classList.add('accordion-cnt');
+
+      this.elements = this.accordion.children;
+
+      while (this.elements.length) {
+        this.elements[0].classList.add('accordion-element');
+
+        // Random background addition
+        let randNumber = Math.floor(Math.random() * this.options.backgroundsSet.length)
+        this.elements[0].style.background = this.options.backgroundsSet[randNumber];
+        this.options.backgroundsSet.splice(randNumber, 1);
+
+        // In case you do not want to set backgrounds in randowm way:
+        //this.slides[0].style.background = this.options.backgroundsSet[0];
+        //this.options.backgroundsSet.splice(0, 1);
+
+        this.elements[0].style.backgroundSize = 'cover';
+        this.elements[0].style.backgroundPosition = 'center';
+
+        accordionContainer.appendChild(this.elements[0]);
+      }
+
+      this.accordion.appendChild(accordionContainer);
+    }
+  }
+
+  const accordionSample = new Accordion('#accordion1');
 });
 

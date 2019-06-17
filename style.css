@@ -6,7 +6,9 @@
   padding: 0;
 }
 
-/* === Main slide window === */
+/* ===== SLIDER ===== */
+
+/* === Main slide container === */
 
 .slider {
   position: relative;
@@ -177,4 +179,80 @@
 
 .slider-dots-button:focus {
   outline: none;
+}
+
+/* ===== ACCORDION ===== */
+
+/* === Main accordion container === */
+
+.accordion {
+  position: relative;
+  overflow: hidden;
+  background-color: #222;
+  height: 100vh;
+}
+
+/* === All elements container === */
+
+.accordion-cnt {
+  display: flex;
+  height: calc(100vh - 1rem);
+  justify-content: center;
+  background-color: #ccc;
+  overflow: hidden;
+  margin: 0.5rem;
+}
+
+/* === Single elements === */
+
+.accordion-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  overflow: hidden;
+  flex: 1;
+  transition: 0.5s all ease-in-out;
+}
+
+.accordion-element .element-title {
+  white-space: nowrap;
+  transform: rotate(-90deg);
+  transition: 0.5s all;
+  text-align: center;
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 30px 10px #fff;
+}
+
+.accordion-element .element-text {
+  margin: 1.5rem;
+  padding: 1rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 20px 6px #fff;
+  font-size: 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
+  height: 0;
+  opacity: 0;
+  text-align: center;
+}
+
+.accordion-element:hover {
+  flex-grow: 4;
+}
+
+.accordion-element:hover .element-title {
+  transform: rotate(0);
+}
+
+.accordion-element:hover .element-text {
+  opacity: 1;
+  height: auto;
+  transition: 0.5s 0.45s opacity;
 }
