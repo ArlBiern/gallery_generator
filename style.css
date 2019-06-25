@@ -6,6 +6,10 @@
   padding: 0;
 }
 
+body {
+  min-width: 700px;
+}
+
 /* ===== SLIDER ===== */
 
 /* === Main slide container === */
@@ -186,7 +190,6 @@
 /* === Main accordion container === */
 
 .accordion {
-  position: relative;
   overflow: hidden;
   background-color: #222;
   height: 100vh;
@@ -201,6 +204,7 @@
   background-color: #ccc;
   overflow: hidden;
   margin: 0.5rem;
+  position: relative;
 }
 
 /* === Single elements === */
@@ -255,4 +259,131 @@
   opacity: 1;
   height: auto;
   transition: 0.5s 0.45s opacity;
+}
+
+/* ===== TABS GALLERY ===== */
+
+br {
+  content: ' ';
+}
+
+br:after {
+  content: ' ';
+}
+
+/* === Mian tab gallery container === */
+
+.tab-gallery {
+  position: relative;
+  overflow: hidden;
+  background-color: #222;
+  height: 100vh;
+}
+
+/* === All elements container === */
+
+.tab-gallery-cnt {
+  margin: 1rem;
+  height: calc(100vh - 2rem);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.tab-gallery-min {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20%;
+  width: 90%;
+  overflow: hidden;
+}
+
+.gallery-element {
+  height: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.8;
+  border: none;
+}
+
+.gallery-element:hover {
+  border: 3px solid #fff;
+}
+
+.gallery-element-active {
+  opacity: 1;
+  border: 3px solid #fff;
+}
+
+.gallery-element .element-title {
+  position: relative;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 20px 7px #fff;
+  display: inline-block;
+  color: #fff;
+}
+
+.gallery-element .element-text {
+  display: none;
+}
+
+/* === Marker === */
+
+.tab-gallery-marker {
+  width: 100%;
+  height: 5%;
+}
+
+.marker {
+  width: 10px;
+  height: 100%;
+  background-color: #fff;
+  position: relative;
+  transition: 0.2s all ease-in-out;
+}
+
+/* === Zoom container === */
+
+.gallery-element-zoom {
+  background-position: center;
+  background-size: cover;
+  height: 75%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #fff;
+  border-radius: 10px;
+  transition: 0.5s all ease-in-out;
+}
+
+.zoom-title {
+  color: #fff;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 20px 7px #fff;
+  margin-bottom: 2rem;
+}
+
+.zoom-text {
+  color: #fff;
+  border-radius: 3px;
+  padding: 0.4rem 0.8rem;
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px 5px #fff;
+  text-align: center;
+  width: 80%;
 }

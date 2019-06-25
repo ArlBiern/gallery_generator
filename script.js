@@ -1,36 +1,35 @@
-document.addEventListener("DOMContentLoaded", function() {
-
+document.addEventListener("DOMContentLoaded", function () {
   // SLIDER
 
   // Technology backgrounds
-  const techBackgrounds = [
+  let techBackgrounds = [
     'url(https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
     'url(https://images.pexels.com/photos/908284/pexels-photo-908284.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
     'url(https://images.pexels.com/photos/1044990/pexels-photo-1044990.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
     'url(https://images.pexels.com/photos/1150988/pexels-photo-1150988.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
     'url(https://images.pexels.com/photos/745708/pexels-photo-745708.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
     'url(https://images.pexels.com/photos/50711/board-electronics-computer-data-processing-50711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)'
-  ]
+  ];
 
   // Fruits backgrounds
-  const fruitsBackgrounds = [
+  let fruitsBackgrounds = [
     'url(https://images.pexels.com/photos/8066/fruits-market-colors.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
     'url(https://images.pexels.com/photos/87818/background-berries-berry-blackberries-87818.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
     'url(https://images.pexels.com/photos/89778/strawberries-frisch-ripe-sweet-89778.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
     'url(https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
     'url(https://images.pexels.com/photos/953215/pexels-photo-953215.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
     'url(https://images.pexels.com/photos/1652312/pexels-photo-1652312.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)'
-  ]
+  ];
 
   // Joy backgrounds
-  const joyBackgrounds = [
+  let joyBackgrounds = [
     'url(https://images.pexels.com/photos/1263986/pexels-photo-1263986.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
     'url(https://images.pexels.com/photos/1684187/pexels-photo-1684187.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
     'url(https://images.pexels.com/photos/1583582/pexels-photo-1583582.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
     'url(https://images.pexels.com/photos/40815/youth-active-jump-happy-40815.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
     'url(https://images.pexels.com/photos/1148998/pexels-photo-1148998.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
     'url(https://images.pexels.com/photos/724825/pexels-photo-724825.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)'
-  ]
+  ];
 
   // Slider class
 
@@ -43,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
         backgroundsSet: fruitsBackgrounds,
         nextText: '>',
         prevText: '<'
-      }
+      };
 
       this.options = Object.assign({}, defaultOptions, options);
       this.sliderSelector = elementsSelector;
@@ -77,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
         this.slides[0].classList.add('slider-slide');
 
         // Random background addition
-        let randNumber = Math.floor(Math.random() * this.options.backgroundsSet.length)
+        let randNumber = Math.floor(Math.random() * this.options.backgroundsSet.length);
         this.slides[0].style.background = this.options.backgroundsSet[randNumber];
         this.options.backgroundsSet.splice(randNumber, 1);
 
@@ -116,7 +115,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
       const nav = document.createElement('div');
       nav.classList.add('slider-nav');
-      nav.setAttribute('aria-label', 'Slider prev next');
       nav.appendChild(this.prev);
       nav.appendChild(this.next);
       this.slider.appendChild(nav);
@@ -126,7 +124,6 @@ document.addEventListener("DOMContentLoaded", function() {
     createDots() {
       const ulDots = document.createElement('ul');
       ulDots.classList.add('slider-dots');
-      ulDots.setAttribute('aria-label', 'Slider pagination');
 
       for (let i = 0; i < this.slides.length; i++) {
         const li = document.createElement('li');
@@ -136,7 +133,6 @@ document.addEventListener("DOMContentLoaded", function() {
         btn.classList.add('slider-dots-button');
         btn.type = 'button';
         btn.innerText = i + 1;
-        btn.setAttribute('aria-label', 'Set slide ' + (i + 1));
 
         btn.addEventListener('click', () => this.changeSlide(i));
 
@@ -154,12 +150,9 @@ document.addEventListener("DOMContentLoaded", function() {
     changeSlide(index) {
       [...this.slides].forEach((slide) => {
         slide.classList.remove('slider-slide-active');
-        slide.setAttribute('aria-hidden', true);
       });
 
       this.slides[index].classList.add('slider-slide-active');
-      this.slides[index].setAttribute('aria-hidden', false);
-
 
       this.dots.forEach((dot) => dot.classList.remove('slider-dots-element-active'));
       this.dots[index].classList.add('slider-dots-element-active');
@@ -174,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Chenge slides with prev/next buttons
     slidePrev() {
-      this.currentSlide--
+      this.currentSlide--;
       if (this.currentSlide < 0) {
         this.currentSlide = this.slides.length - 1;
       }
@@ -182,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     slideNext() {
-      this.currentSlide++
+      this.currentSlide++;
       if (this.currentSlide > this.slides.length - 1) {
         this.currentSlide = 0;
       }
@@ -200,9 +193,9 @@ document.addEventListener("DOMContentLoaded", function() {
     constructor(elementsSelector, options) {
       const defaultOptions = {
         backgroundsSet: joyBackgrounds
-      }
+      };
 
-      this.options = Object.assign({}, defaultOptions, options)
+      this.options = Object.assign({}, defaultOptions, options);
       this.accordionSelector = elementsSelector;
       this.accordion = null;
       this.elements = null;
@@ -224,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function() {
         this.elements[0].classList.add('accordion-element');
 
         // Random background addition
-        let randNumber = Math.floor(Math.random() * this.options.backgroundsSet.length)
+        let randNumber = Math.floor(Math.random() * this.options.backgroundsSet.length);
         this.elements[0].style.background = this.options.backgroundsSet[randNumber];
         this.options.backgroundsSet.splice(randNumber, 1);
 
@@ -243,5 +236,121 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   const accordionSample = new Accordion('#accordion1');
-});
 
+  // ============================================
+
+  // === TAB GALLERY ===
+
+  class TabGallery {
+    constructor(elementSelector, options) {
+      const defaultOptions = {
+        backgroundsSet: techBackgrounds
+      };
+
+      this.options = Object.assign({}, defaultOptions, options);
+      this.tabGallerySelector = elementSelector;
+      this.tabGallery = null;
+      this.elements = null;
+      this.activeElement = null;
+
+      this.generateTabGallery();
+      this.tabZoom();
+
+      window.addEventListener('resize', () => this.setMarkerPosition());
+    }
+
+    // Generating main container with its elements
+    generateTabGallery() {
+      this.tabGallery = document.querySelector(this.tabGallerySelector);
+      this.tabGallery.classList.add('tab-gallery');
+
+      const tabGalleryContainer = document.createElement('div');
+      tabGalleryContainer.classList.add('tab-gallery-cnt');
+
+      const tabGalleryMin = document.createElement('div');
+      tabGalleryMin.classList.add('tab-gallery-min');
+
+      const tabGalleryMarker = document.createElement('div');
+      tabGalleryMarker.classList.add('tab-gallery-marker');
+
+      const marker = document.createElement('div');
+      marker.classList.add('marker');
+      tabGalleryMarker.appendChild(marker);
+
+      this.elements = this.tabGallery.children;
+      const elementsWidth = 90 / this.elements.length;
+
+      while (this.elements.length) {
+        this.elements[0].classList.add('gallery-element');
+        this.elements[0].style.width = `${elementsWidth}%`;
+
+        this.elements[0].style.background = this.options.backgroundsSet[0];
+        this.options.backgroundsSet.splice(0, 1);
+        this.elements[0].style.backgroundSize = 'cover';
+        this.elements[0].style.backgroundPosition = 'center';
+
+        tabGalleryMin.appendChild(this.elements[0]);
+      }
+
+      const tabGalleryZoom = document.createElement('div');
+      tabGalleryZoom.classList.add('gallery-element-zoom');
+
+      const zoomTitle = document.createElement('h2');
+      zoomTitle.classList.add('zoom-title');
+
+      const zoomText = document.createElement('p');
+      zoomText.classList.add('zoom-text');
+
+      tabGalleryZoom.appendChild(zoomTitle);
+      tabGalleryZoom.appendChild(zoomText);
+
+      tabGalleryContainer.appendChild(tabGalleryMin);
+      tabGalleryContainer.appendChild(tabGalleryMarker);
+      tabGalleryContainer.appendChild(tabGalleryZoom);
+
+      this.tabGallery.appendChild(tabGalleryContainer);
+    }
+
+    // Setting marker position
+    setMarkerPosition() {
+      const element = document.querySelector('.gallery-element-active');
+      let center = element.offsetLeft + (element.offsetWidth / 2);
+      const marker = document.querySelector('.marker');
+      marker.style.left = center - 5 + 'px';
+    }
+
+    // Formating zoom container content
+    tabZoom() {
+      const elements = document.querySelectorAll('.gallery-element');
+
+      function deleteStyles() {
+        [...elements].forEach(element => {
+          element.classList.remove('gallery-element-active');
+        });
+      }
+
+      [...elements].forEach(element => {
+        const self = this;
+
+        element.addEventListener('click', function() {
+          deleteStyles();
+          element.classList.add('gallery-element-active');
+
+          const galleryElementZoom = document.querySelector('.gallery-element-zoom');
+          const title = galleryElementZoom.firstElementChild;
+          title.innerText = this.querySelector('.element-title').innerText;
+
+          const text = galleryElementZoom.lastElementChild;
+          text.innerText = this.querySelector('.element-text').innerText;
+
+          galleryElementZoom.style.backgroundImage = this.style.backgroundImage;
+
+          self.setMarkerPosition();
+        });
+      });
+      elements[0].click();
+    }
+  }
+
+  const tabGallerySample = new TabGallery('#tabGallery1');
+});
